@@ -4,7 +4,7 @@
  * The Universal Permissive License (UPL), Version 1.0
  */
 /*
- * Your about ViewModel code goes here
+ * Your home ViewModel code goes here
  */
 define(['ojs/ojcore', 'knockout', 'jquery'],
  function(oj, ko, $) {
