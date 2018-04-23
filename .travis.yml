@@ -17,10 +17,10 @@ before_install:
 # - ./push.sh
 
 before_script:
-  - npm build
+  - ojet build
 
 script:
-  - npm serve
+  - ojet serve
 
 env:
   global:
