@@ -2,11 +2,14 @@ sudo: required
 
 language: node_js
 node_js:
-  - "iojs"
   - "7"
     
 hosts:
   - localhost
+
+cache:
+  directories:
+    - node_modules
 
 before_install:
   - npm install -g @oracle/ojet-cli
@@ -16,11 +19,11 @@ before_install:
 # - chmod +x ./push.sh 
 # - ./push.sh
 
-before_script:
-  - ojet build
+# before_script:
+#   - ojet build
 
 script:
-  - ojet serve
+  - ojet build
 
 env:
   global:
