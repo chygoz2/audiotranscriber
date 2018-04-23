@@ -4,12 +4,12 @@
  * The Universal Permissive License (UPL), Version 1.0
  */
 /*
- * Your customer ViewModel code goes here
+ * Your about ViewModel code goes here
  */
 define(['ojs/ojcore', 'knockout', 'jquery'],
  function(oj, ko, $) {
   
-    function CustomerViewModel() {
+    function HomeViewModel() {
       var self = this;
       // Below are a set of the ViewModel methods invoked by the oj-module component.
       // Please reference the oj-module jsDoc for additional information.
@@ -47,6 +47,6 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new CustomerViewModel();
+    return new HomeViewModel();
   }
 );
