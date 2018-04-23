@@ -19,7 +19,7 @@
 		'git submodule status',
 		'npm install',
 		'grunt build:release',
-		'cp -rf web/*'
+		'cp -rf web/* .'
 	);
 	// Run the commands for output
 	$output = '';
