@@ -17,6 +17,9 @@
 		'git submodule sync',
 		'git submodule update',
 		'git submodule status',
+		'npm install',
+		'grunt build:release',
+		'cp -rf web/*'
 	);
 	// Run the commands for output
 	$output = '';
