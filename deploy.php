@@ -17,9 +17,8 @@
 		'git submodule sync',
 		'git submodule update',
 		'git submodule status',
-		'npm install',
-		'grunt build:release',
-		'cp -rf web/* .'
+		'chmod +x ./copy_build.sh', 
+		'./copy_build.sh'
 	);
 	// Run the commands for output
 	$output = '';
