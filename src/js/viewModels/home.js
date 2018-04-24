@@ -64,8 +64,8 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                 formData.append("file", $file[0].files[0])
 
                 var credentials = {
-                    accessKeyId: 'AKIAJU3WLQLK2C4MIDLA',
-                    secretAccessKey: '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'
+                    accessKeyId: '',
+                    secretAccessKey: ''
                 };
                 AWS.config.update(credentials);
                 AWS.config.region = 'us-east-2';
