@@ -1,0 +1,47 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\bytenaija\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\bytenaija\bin;C:\Program Files\Python36\Scripts;C:\Program Files\Python36;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\WinMerge;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.3.3\bin;C:\Users\bytenaija\AppData\Local\Microsoft\WindowsApps;C:\Users\bytenaija\AppData\Roaming\npm;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Docker Toolbox;C:\Users\bytenaija\AppData\Roaming\Composer\vendor\bin;C:\Users\bytenaija\.rvm\bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.10.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "audiotranscriber",
+    "version": "1.0.0",
+    "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
+    "dependencies": {
+      "@oracle/oraclejet": "~5.0.0"
+    },
+    "devDependencies": {
+      "grunt": "^1.0.1",
+      "@oracle/grunt-oraclejet": "~5.0.0",
+      "load-grunt-config": "0.19.2",
+      "@oracle/oraclejet-tooling": "~5.0.0",
+      "qunit-reporter-junit": "^1.1.1",
+      "qunit": "^2.4.1"
+    },
+    "engines": {
+      "node": ">=0.10.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at errnoException (dns.js:50:10)
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
