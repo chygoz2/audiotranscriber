@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -r web
 npm install
 grunt build:release
-cp -rf web/* .
+cp -r web/* .

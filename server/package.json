@@ -1,0 +1,22 @@
+{
+    "name": "dragonglass",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.227.1",
+        "debug": "~2.6.9",
+        "express": "^4.16.3",
+        "morgan": "^1.9.0",
+        "multer": "^1.3.0",
+        "multer-s3": "^2.7.0",
+        "nodemon": "^1.17.3"
+    },
+    "main": "app.js",
+    "author": "Everistus Olumese <everistusolumese@gmail.com>",
+    "license": "ISC",
+    "description": ""
+}
