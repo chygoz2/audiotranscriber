@@ -51,9 +51,9 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
 
         //sample binding
-        let $upload = $('#upload');
-
-        console.log($upload.html());
+        //let $upload = $('#uploadFPc');
+        
+        //console.log($upload.html());
       }
     }
 
