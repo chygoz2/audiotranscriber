@@ -1,8 +1,8 @@
 #!/bin/bash
 rm -r web
+rm -r typist
 npm install
 grunt build:release
-sudo rm -r typist
 mkdir typist
 cp -r web/* .
 cp -r web/* typist

@@ -18,9 +18,9 @@
 		'sudo git submodule update',
 		'sudo git submodule status',
 		'sudo rm -r web',
+		'sudo rm -r typist',
 		'sudo npm install',
 		'sudo grunt build:release',
-		'sudo rm -r typist',
 		'sudo mkdir typist',
 		'sudo cp -r web/* .',
 		'sudo cp -r web/* typist'
