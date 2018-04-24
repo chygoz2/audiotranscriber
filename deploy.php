@@ -8,26 +8,27 @@
 	 * https://medium.com/riow/deploy-to-production-server-with-git-using-php-ab69b13f78ad
 	 */
 	// The commands
-	// $commands = array(
-	// 	'echo $PWD',
-	// 	'whoami',
-	// 	'git reset --hard HEAD',
-	// 	'git pull',
-	// 	'git status',
-	// 	'git submodule sync',
-	// 	'git submodule update',
-	// 	'git submodule status'
-	// );
-	// 'chmod +x ./copy_build.sh', 
-	// './copy_build.sh'	
 	$commands = array(
 		'echo $PWD',
 		'whoami',
-		'git reset --hard HEAD',
-		'git pull',
-		'chmod +x ./copy_build.sh', 
-		'./copy_build.sh'
+		'sudo git reset --hard HEAD',
+		'sudo git pull',
+		'git status',
+		'sudo git submodule sync',
+		'sudo git submodule update',
+		'sudo git submodule status',
+		'sudo rm -r web',
+		'sudo npm install',
+		'sudo grunt build:release',
+		'sudo cp -r web/* .'
 	);
+	// $commands = array(
+	// 	'echo $PWD',
+	// 	'whoami',
+	// 	'git pull origin master',
+	// 	'chmod +x ./copy_build.sh', 
+	// 	'./copy_build.sh'
+	// );
 	// Run the commands for output
 	$output = '';
 	foreach($commands AS $command){
