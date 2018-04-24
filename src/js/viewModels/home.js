@@ -57,22 +57,15 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
             }
 
-            self.upload = function() {
+            self.upload = function(event, data, bindingContext) {
                 $file = $('#file')
-                console.log($file[0].files[0])
-                var formData = new FormData();
-                formData.append("file", $file[0].files[0])
 
-                var credentials = {
-                    accessKeyId: '',
-                    secretAccessKey: ''
-                };
                 AWS.config.update(credentials);
                 AWS.config.region = 'us-east-2';
 
+
                 // create bucket instance
                 var bucket = new AWS.S3({
-
                     params: { Bucket: 'hng4' }
                 });
 
@@ -84,7 +77,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                         if (err) {
                             console.log(err)
                         } else {
-                            // console.log(data);
+                            console.log(data);
                             awsTranscribe(data.Location);
                             googleTranscribe(data.Location);
                         }
@@ -96,38 +89,60 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
 
                 function awsTranscribe(filename) {
-                    var transcribeservice = new AWS.TranscribeService();
-                    transcribeservice.createVocabulary(params, function(err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else console.log(data); // successful response
-                    });
+                    var ext = getFileExt(filename);
+                    console.log(ext);
+
+                    var transcribeservice = new AWS.TranscribeService({});
+
+                    var transcribeName = "HNG" + Date.now()
+
                     var params = {
-                        LanguageCode: en - US | es - US,
-                        /* required */
-                        Media: { /* required */
+                        LanguageCode: "en-US",
+                        Media: {
                             MediaFileUri: filename
                         },
-                        MediaFormat: mp3 | mp4 | wav | flac,
-                        /* required */
-                        TranscriptionJobName: 'internship1',
-                        /* required */
+                        MediaFormat: ext,
+
+                        TranscriptionJobName: transcribeName,
+
                         MediaSampleRateHertz: 0,
-                        Settings: {
-                            MaxSpeakerLabels: 0,
-                            ShowSpeakerLabels: true || false,
-                            VocabularyName: 'STRING_VALUE'
-                        }
+
                     };
                     transcribeservice.startTranscriptionJob(params, function(err, data) {
                         if (err) console.log(err, err.stack); // an error occurred
                         else console.log(data); // successful response
                     });
 
+                    let interval = setInterval(function() {
+                            transcribeservice.getTranscriptionJob({ TranscriptionJobName: transcribeName }, function(err, response) {
+
+                                if (err) {
+                                    clearInterval(interval);
+                                    console.log(err);
+                                } else {
+
+                                    if (response.TranscriptionJob["TranscriptionJobStatus"] == 'COMPLETED' || response.TranscriptionJob["TranscriptionJobStatus"] == 'FAILED') {
+                                        console.log(response);
+
+                                        clearInterval(interval);
+
+                                    }
+                                }
+                            })
+                        },
+                        5000)
+
+
+
 
                 }
 
-                function googleTranscribe() {
+                function googleTranscribe(filename) {
 
+                }
+
+                function getFileExt(filename) {
+                    return filename.split('.').pop();
                 }
             }
         }
@@ -139,4 +154,5 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
          */
         return new HomeViewModel();
     }
+
 );

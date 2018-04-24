@@ -10,6 +10,7 @@
 !hybrid/plugins
 hybrid/plugins/*
 !hybrid/plugins/fetch.json
-
+config.js
 .DS_Store
 Thumbs.db
+/js/config.js
