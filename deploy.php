@@ -11,16 +11,19 @@
 	$commands = array(
 		'echo $PWD',
 		'whoami',
-		'sudo git reset --hard HEAD',
-		'sudo git pull',
+		'git reset --hard HEAD',
+		'git pull',
 		'git status',
-		'sudo git submodule sync',
-		'sudo git submodule update',
-		'sudo git submodule status',
+		'git submodule sync',
+		'git submodule update',
+		'git submodule status',
 		'sudo rm -r web',
+		'sudo rm -r typist',
 		'sudo npm install',
 		'sudo grunt build:release',
-		'sudo cp -r web/* .'
+		'sudo mkdir typist',
+		'sudo cp -r web/* .',
+		'sudo cp -r web/* typist'
 	);
 	// $commands = array(
 	// 	'echo $PWD',
