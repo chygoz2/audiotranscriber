@@ -23,7 +23,9 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
        * after being disconnected.
        */
       self.connected = function() {
-        // Implement if needed
+
+        //bind the ui events on connecting the home module
+        self.bindEvents();
       };
 
       /**
@@ -40,6 +42,19 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
       self.transitionCompleted = function() {
         // Implement if needed
       };
+
+      /**
+       * Bind the UI events @Team Google @Team AWS use this to bind your functios for upload and transcription
+       * you have jquery available for AJAX request --Best of luck
+       */
+      self.bindEvents = function(){
+
+
+        //sample binding
+        let $upload = $('#upload');
+
+        console.log($upload.html());
+      }
     }
 
     /*
