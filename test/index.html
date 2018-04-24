@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <input type="file" name="audio" accept="audio/*" id="file">
+  <input type="submit" id="button"><br>
+  <p style="color: red" id="response"></p>
+
+<p><strong>Note:</strong> The accept attribute of the input tag is not supported in Internet Explorer 9 (and earlier versions), and Safari 5 (and earlier).</p>
+<p><strong>Note:</strong> Because of security issues, this example will not allow you to upload files.</p>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    document.getElementById('button').addEventListener('click', function() {
+        var files = document.getElementById('file').files;
+        if (files.length > 0) {
+            getBase64(files[0]);
+        }
+    });
+
+    function getBase64(file) {
+        var base64String = null;
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            var b64 = reader.result;
+            var arr = b64.split(',');
+            var base64String = arr[1];
+            var fileName = file.name;
+            var brr = fileName.split(".");
+            var fileExtension = brr[brr.length-1].trim();
+            
+            // axios.post('https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyDAUWqKOBYP-Y1LeuD3lFRAy9jiZwRpQP8', { 
+            axios.post('save-file-string.php', { 
+                audio: { 
+                    content: base64String,
+                    extension: fileExtension 
+                },
+                config: { 
+                    languageCode: "en-US",
+                    encoding: "FLAC",
+                    sampleRateHertz: 16000
+                }
+            })
+            .then(function (response) {
+                // var transcription = response.data.results[0].alternatives[0];
+                // console.log(transcription);
+                // $('#response').html(transcription.transcript);
+                var file = response.data.file;
+                console.log(file);
+                $('#response').html(file);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+</script>
+</html>
