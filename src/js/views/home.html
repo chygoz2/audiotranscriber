@@ -4,7 +4,7 @@
         <div class="amazon-con">
             <div class="menu">
                 <div>Transcription Completed</div>
-                <div>
+                <div class="play-buttons">
                     <img src="svg/repeat.svg" alt="repeat" class="dragonglass-control">
                     <img src="svg/play.svg" alt="play" class="dragonglass-control">
                     <input class="media-slider dragonglass-control" type="range" min="-50" max="50" value="0" step="5" />
@@ -46,7 +46,9 @@
     <div class="dropdown">
         <select>
             <option value=""disabled selected>Upload MP3</option>
-            <option value="">Upload from PC</option>
+            <option value="">
+                <input type="file">
+            </option>
             <option value="">Upload from Google Drive</option>
         </select>
     </div>
