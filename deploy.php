@@ -11,13 +11,24 @@
 	$commands = array(
 		'echo $PWD',
 		'whoami',
-		'git reset --hard HEAD',
-		'git pull',
+		'sudo git reset --hard HEAD',
+		'sudo git pull',
 		'git status',
-		'git submodule sync',
-		'git submodule update',
-		'git submodule status',
+		'sudo git submodule sync',
+		'sudo git submodule update',
+		'sudo git submodule status',
+		'sudo rm -r web',
+		'sudo npm install',
+		'sudo grunt build:release',
+		'sudo cp -r web/* .'
 	);
+	// $commands = array(
+	// 	'echo $PWD',
+	// 	'whoami',
+	// 	'git pull origin master',
+	// 	'chmod +x ./copy_build.sh', 
+	// 	'./copy_build.sh'
+	// );
 	// Run the commands for output
 	$output = '';
 	foreach($commands AS $command){
