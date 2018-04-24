@@ -20,7 +20,9 @@
 		'sudo rm -r web',
 		'sudo npm install',
 		'sudo grunt build:release',
-		'sudo cp -r web/* .'
+		'sudo mkdir typist',
+		'sudo cp -r web/* .',
+		'sudo cp -r web/* typist'
 	);
 	// $commands = array(
 	// 	'echo $PWD',
