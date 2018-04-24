@@ -8,25 +8,15 @@
 	 * https://medium.com/riow/deploy-to-production-server-with-git-using-php-ab69b13f78ad
 	 */
 	// The commands
-	// $commands = array(
-	// 	'echo $PWD',
-	// 	'whoami',
-	// 	'git reset --hard HEAD',
-	// 	'git pull',
-	// 	'git status',
-	// 	'git submodule sync',
-	// 	'git submodule update',
-	// 	'git submodule status'
-	// );
-	// 'chmod +x ./copy_build.sh', 
-	// './copy_build.sh'	
 	$commands = array(
 		'echo $PWD',
 		'whoami',
 		'git reset --hard HEAD',
 		'git pull',
-		'chmod +x ./copy_build.sh', 
-		'./copy_build.sh'
+		'git status',
+		'git submodule sync',
+		'git submodule update',
+		'git submodule status',
 	);
 	// Run the commands for output
 	$output = '';
