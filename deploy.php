@@ -25,7 +25,6 @@
 		'whoami',
 		'git reset --hard HEAD',
 		'git pull',
-		'rm -r web',
 		'chmod +x ./copy_build.sh', 
 		'./copy_build.sh'
 	);
