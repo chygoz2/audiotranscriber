@@ -19,9 +19,6 @@
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
         <!-- This is where you would add any app specific styling -->
         <link rel="stylesheet" href="css/app.css" type="text/css" />
-        <script src="js/aws-sdk-2.227.1.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/upload.js" />
     </head>
 
     <body class="oj-web-applayout-body">
@@ -133,12 +130,95 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/aws-sdk-2.227.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/upload.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="js/libs/require/require.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#upload").click(function() {
+                alert("Yeah")
+                var formData = new FormData();
+                formData.append("file", $('#file')[0].files[0])
+
+                var credentials = {
+                    accessKeyId: 'AKIAIJOHCIPOFIYWFJ4A',
+                    secretAccessKey: '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'
+                };
+                AWS.config.update(credentials);
+                AWS.config.region = 'us-east-2';
+
+                // create bucket instance
+                var bucket = new AWS.S3({
+                    params: {
+                        Bucket: 'hng4'
+                    }
+                });
+
+                var file = $('#file').files[0];
+                if (file) {
+                    filename = Date.now() + file.name;
+                    var params = {
+                        Key: filename,
+                        ContentType: file.type,
+                        Body: file,
+                        'Access-Control-Allow-Credentials': '*'
+                    };
+                    bucket.upload(params, function(err, data) {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            console.log(data);
+                            awsTranscribe(filename);
+                        }
+                    });
+                }
+
+                googleTranscribe();
+            }, false);
+        });
+
+        function awsTranscribe(filename) {
+            var transcribeservice = new AWS.TranscribeService();
+            transcribeservice.createVocabulary(params, function(err, data) {
+                if (err) console.log(err, err.stack); // an error occurred
+                else console.log(data); // successful response
+            });
+            var params = {
+                LanguageCode: en - US | es - US,
+                /* required */
+                Media: { /* required */
+                    MediaFileUri: filename
+                },
+                MediaFormat: mp3 | mp4 | wav | flac,
+                /* required */
+                TranscriptionJobName: 'internship1',
+                /* required */
+                MediaSampleRateHertz: 0,
+                Settings: {
+                    MaxSpeakerLabels: 0,
+                    ShowSpeakerLabels: true || false,
+                    VocabularyName: 'STRING_VALUE'
+                }
+            };
+            transcribeservice.startTranscriptionJob(params, function(err, data) {
+                if (err) console.log(err, err.stack); // an error occurred
+                else console.log(data); // successful response
+            });
+
+
+        }
+
+        function googleTranscribe() {
+
+        }
+    </script>
 </body>
 
 </html>

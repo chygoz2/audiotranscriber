@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#upload").on('click', function() {
+    $("button").click(function() {
         alert("Yeah")
         var formData = new FormData();
         formData.append("file", $('#file')[0].files[0])
