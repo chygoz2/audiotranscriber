@@ -102,7 +102,8 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
                 function awsTranscribe(filename) {
                     $amazon = $('#amazonTranscribed');
-                    url = "http://dragonglass.hng.fun/aws.php?filename=";
+                    // url = "http://dragonglass.hng.fun/aws.php?filename=";
+                    url = "http://localhost:8001/aws.php?filename=";
                     // var url = "/aws.php?filename=";
                     urlTo = url + filename;
                     fetch(urlTo)
