@@ -64,7 +64,9 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                 let $upload = $('#upload');
                 let $file = $('#file');
                 let $amazon = $('#amazonTranscribed');
-                self.amazonValue = ko.observable("Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintockhe first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.");
+                self.dummyValue = ko.observable("<h3>Transcript will appear here shorlty...<h3>");
+                self.amazonValue = ko.observable("");                
+                self.googleValue = ko.observable("")
 
 
             }
@@ -113,52 +115,12 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                         .then(response => {
                             console.log(response);
                             $('#processing').hide();
+                            $('.complete-notice').fadeIn('slow');
+                            //empty dummy value and add true result
+                            self.dummyValue('');
                             self.amazonValue(response);
                         })
-                        /*
-                    var ext = getFileExt(filename);
-                    console.log(ext);
-
-                    var transcribeservice = new AWS.TranscribeService({ httpOptions: { xhrWithCredentials: true } });
-                    console.log(transcribeservice)
-                    var transcribeName = "HNG" + Date.now()
-
-                    var params = {
-                        LanguageCode: "en-US",
-                        Media: {
-                            MediaFileUri: filename
-                        },
-                        MediaFormat: ext,
-                        TranscriptionJobName: transcribeName
-
-                    };
-                    transcribeservice.startTranscriptionJob(params, function(err, data) {
-                        if (err) console.log(err, err.stack); // an error occurred
-                        else console.log(data); // successful response
-                    });
-
-                    let interval = setInterval(function() {
-                            transcribeservice.getTranscriptionJob({ TranscriptionJobName: transcribeName }, function(err, response) {
-
-                                if (err) {
-                                    clearInterval(interval);
-                                    console.log(err);
-                                } else {
-
-                                    if (response.TranscriptionJob["TranscriptionJobStatus"] == 'COMPLETED' || response.TranscriptionJob["TranscriptionJobStatus"] == 'FAILED') {
-                                        console.log(response);
-
-                                        clearInterval(interval);
-
-                                    }
-                                }
-                            })
-                        },
-                        5000)
-
-
-                                    */
-
+                   
                 }
 
                 function googleTranscribe(filename) {
