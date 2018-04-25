@@ -17,13 +17,13 @@
 		'git submodule sync',
 		'git submodule update',
 		'git submodule status',
-		'sudo rm -r web',
-		'sudo rm -r typist',
-		'sudo npm install',
-		'sudo grunt build:release',
-		'sudo mkdir typist',
-		'sudo cp -r web/* .',
-		'sudo cp -r web/* typist'
+		'rm -r web',
+		'rm -r typist',
+		'npm install',
+		'grunt build:release',
+		'mkdir typist',
+		'cp -r web/* .',
+		'cp -r web/* typist'
 	);
 	// $commands = array(
 	// 	'echo $PWD',
