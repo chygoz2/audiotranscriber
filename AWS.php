@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 header('Access-Control-Allow-Origin: *'); 
 require './credentials.php';
 require 'vendor/autoload.php';
