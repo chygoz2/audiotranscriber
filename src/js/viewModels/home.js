@@ -44,7 +44,8 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
             };
 
             /**
-             * Bind the UI events @Team Google @Team AWS use this to bind your functios for upload and transcription
+             * Bind the UI events @Team Goo
+             * gle @Team AWS use this to bind your functios for upload and transcription
              * you have jquery available for AJAX request --Best of luck
              */
             self.bindEvents = function() {
@@ -53,6 +54,8 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                 //sample binding
                 let $upload = $('#upload');
                 let $file = $('#file');
+                let $amazon = $('#amazonTranscribed');
+                self.amazonValue = ko.observable("Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintockhe first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.");
 
 
             }
@@ -89,11 +92,23 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
 
                 function awsTranscribe(filename) {
+                    $amazon = $('#amazonTranscribed');
+                    var url = "http://dragonglass.test/aws.php?filename=";
+                    urlTo = url + filename;
+                    fetch(urlTo)
+                        .then(response => {
+                            return response.text();
+                        })
+                        .then(response => {
+                            console.log(response);
+                            self.amazonValue(response);
+                        })
+                        /*
                     var ext = getFileExt(filename);
                     console.log(ext);
 
-                    var transcribeservice = new AWS.TranscribeService({});
-
+                    var transcribeservice = new AWS.TranscribeService({ httpOptions: { xhrWithCredentials: true } });
+                    console.log(transcribeservice)
                     var transcribeName = "HNG" + Date.now()
 
                     var params = {
@@ -102,10 +117,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                             MediaFileUri: filename
                         },
                         MediaFormat: ext,
-
-                        TranscriptionJobName: transcribeName,
-
-                        MediaSampleRateHertz: 0,
+                        TranscriptionJobName: transcribeName
 
                     };
                     transcribeservice.startTranscriptionJob(params, function(err, data) {
@@ -133,7 +145,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                         5000)
 
 
-
+                                    */
 
                 }
 
@@ -154,5 +166,6 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
          */
         return new HomeViewModel();
     }
+
 
 );
