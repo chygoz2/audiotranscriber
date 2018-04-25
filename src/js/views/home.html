@@ -11,28 +11,33 @@
 <div id="processing" class="processing">
     <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> <span>Processing ..., this usually takes a while depending on the file size</span>
 </div>
+<div class="complete-notice">
+    <h2>Transcription Completed </h2>
+</div>
+
 
 <div class="wrapper" id="transcriptions">
     <div class="amazon">
         <h3 class="dragonglass-transcription-title">Amazon Transcription</h3>
         <div class="amazon-con">
-            <div class="menu">
+            <!-- <div class="menu">
                 <div>Transcription Completed</div>
-            </div>
-            <div id="amazonTranscribed" data-bind="text: amazonValue">
-
+            </div> -->
+            <div id="amazonTranscribed">
+                <h3 class="dummy" data-bind="html: dummyValue"></h3>
+                <h3 class="dummy" data-bind="html: amazonValue"></h3>
             </div>
         </div>
     </div>
     <div class="google">
         <h3 class="dragonglass-transcription-title">Google Cloud Speech To Text</h3>
         <div class="amazon-con">
-            <div class="menu">
-                <div>Transcription Completed</div>
-            </div>
+            <!-- <div class="menu"> -->
+                <!-- <div>Transcription Completed</div> -->
+            <!-- </div> -->
             <div>
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintockhe first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from
-                a line in section 1.10.32.
+               <h3 class="dummy" data-bind="html: dummyValue"></h3>
+               <h3 class="dummy" data-bind="html: googleValue"></h3>
             </div>
         </div>
     </div>
