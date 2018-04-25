@@ -51,6 +51,15 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
             self.bindEvents = function() {
 
 
+                $('#upload_file').on('click', function() {
+                        $('#file').click();
+                });
+                
+                $('input[type=file]').change(function (e) {
+                    $('#processing').fadeIn('slow');
+                    self.upload();
+                });
+
                 //sample binding
                 let $upload = $('#upload');
                 let $file = $('#file');
@@ -93,8 +102,8 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
                 function awsTranscribe(filename) {
                     $amazon = $('#amazonTranscribed');
-                    var url = "http://dragonglass.hng.fun/aws.php?filename=";
-                    //url = "http://dragonglass.test/aws.php?filename=";
+                    url = "http://dragonglass.test/aws.php?filename=";
+                    // var url = "/aws.php?filename=";
                     urlTo = url + filename;
                     fetch(urlTo)
                         .then(response => {
@@ -102,6 +111,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
                         })
                         .then(response => {
                             console.log(response);
+                            $('#processing').hide();
                             self.amazonValue(response);
                         })
                         /*

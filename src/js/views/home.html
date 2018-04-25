@@ -1,18 +1,15 @@
 <div class="top-area">
-    <div class="search">
+    <!-- <div class="search">
         <i class="fa fa-link"></i>
         <input class="search-box" placeholder="Enter a Link here">
-    </div>
-    <div class="dropdown">
-        <a class="btn btn-primary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Upload MP3
-        </a>
+    </div> -->
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" data-toggle="modal" data-target="#uploadPC">Upload from PC</a>
-            <a class="dropdown-item" data-toggle="modal" data-target="#uploadGD">Upload from Google Drive</a>
-        </div>
-    </div>
+    <input type="button" id="upload_file" value="Upload File">
+    <input type="file" id="file">
+   
+</div>
+<div id="processing" class="processing">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> <span>Processing ..., this usually takes a while depending on the file size</span>
 </div>
 
 <div class="wrapper" id="transcriptions">
@@ -36,50 +33,6 @@
             <div>
                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintockhe first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from
                 a line in section 1.10.32.
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<!-- Upload from PC Modal -->
-<div class="modal fade" id="uploadPC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Upload MP3 From PC</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="file" id="file" id="file">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" on-click="[[upload]]">Upload  File</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Upload from GD Modal -->
-<div class="modal fade " id="uploadGD " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel " aria-hidden="true ">
-    <div class="modal-dialog " role="document ">
-        <div class="modal-content ">
-            <div class="modal-header ">
-                <h5 class="modal-title " id="exampleModalLabel ">Upload MP3 From Google Drive</h5>
-                <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
-                        <span aria-hidden="true ">&times;</span>
-                    </button>
-            </div>
-            <div class="modal-body ">
-                <input type="file " id="file ">
-            </div>
-            <div class="modal-footer ">
-                <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
-                <button type="button " class="btn btn-primary " class="upload ">Upload</button>
             </div>
         </div>
     </div>
