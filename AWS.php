@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 header('Access-Control-Allow-Origin: *'); 
 require './credentials.php';
 require 'vendor/autoload.php';
@@ -13,7 +14,10 @@ if(isset($_GET["filename"])){
             'secret' => $credentials["secret"],
         ],
     ];
+
+    
     $ext = substr($filename, strrpos($filename, ".")+1);
+    $ext = trim($ext, " ");
     
     $sdk = new Aws\Sdk($sharedConfig);
     $transcribeName = "HNG" .(new \DateTime())->format('YmdHis');
