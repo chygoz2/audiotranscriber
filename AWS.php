@@ -13,8 +13,8 @@ if(isset($_GET["filename"])){
             'secret' => $credentials["secret"],
         ],
     ];
-    $ext = substr($filename, strrpos($filename, ".")+1, 3);
-    
+    $ext = substr($filename, strrpos($filename, ".")+1, 4);
+    $ext = trim($ext, " ");
     $sdk = new Aws\Sdk($sharedConfig);
     $transcribeName = "HNG" .(new \DateTime())->format('YmdHis');
     
