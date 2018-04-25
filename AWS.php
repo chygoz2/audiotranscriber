@@ -1,6 +1,6 @@
 <?php
-set_time_limit(0);
 header('Access-Control-Allow-Origin: *'); 
+set_time_limit(0);
 require './credentials.php';
 require 'vendor/autoload.php';
 if(isset($_GET["filename"])){
@@ -36,8 +36,8 @@ if(isset($_GET["filename"])){
 
     $result = $client->startTranscriptionJob($params);
   
-        sleep(10);
-        getJob($client, $transcribeName);
+    sleep(10);
+    getJob($client, $transcribeName);
      
     
 }
@@ -58,7 +58,10 @@ function getJob($client, $transcribeName){
         //print_r($response);
         $response = json_decode($response, true);
        // print_r($response);
-        echo $response["results"]["transcripts"][0]["transcript"];
+        echo json_encode([
+            'status' => 1, 
+            'message' => $response["results"]["transcripts"][0]["transcript"]
+        ]);
       }else{
           sleep(10);
           getJob($client, $transcribeName);
